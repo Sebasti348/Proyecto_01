@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>header</title>
+</head>
+<body>
+	<nav class="navbar navbar navbar-expand-lg bg-white" data-th-fragment="navbar">
+		<div class="container-fluid">
+    <a class="navbar-brand" > 
+    	<img src="https://fi.unju.edu.ar/images/fi-logo.png" height="50px">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/index">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Acerca de</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Carreras
+          </a>
+          <ul class="dropdown-menu">
+          	<li><a class="dropdown-item" href="/formularioCarrera">Agregar Carrera</a></li>
+            <li><a class="dropdown-item" href="/listadoCarreras">Carreras existentes</a></li>
+
+          </ul>
+        </li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false"> Alumnos </a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="/formularioAlumno">Matricularse</a></li>
+							<li><a class="dropdown-item" href="/listadoAlumnos">Alumnos Matriculados</a></li>
+
+						</ul></li>
+		        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Docentes
+          </a>
+          <ul class="dropdown-menu">
+          	<li><a class="dropdown-item" href="/formularioDocente">Agregar Docente</a></li>
+            <li><a class="dropdown-item" href="/listadoDocentes">Docentes existentes</a></li>
+
+          </ul>
+        </li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false"> Materias </a>
+						<ul class="dropdown-menu">
+						<li><a class="dropdown-item" href="/formularioMateria">Agregar Materia</a></li>
+							<li><a class="dropdown-item" href="/listadoMaterias">Materias</a></li>
+						</ul>
+					</li>
+		<li class="nav-item"><a class="nav-link active" aria-current="page" href="/formularioInscripcion" role="button">Inscribir Alumno a Materia</a></li>
+						
+		<li class="nav-item">			 
+          <a class="nav-link active" aria-current="page" href="/alumnosPorCarrera">Listado de Alumno por Carrera</a>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Busca aqui" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Buscar</button>
+      </form>
+    </div>
+  </div>
+	
+	
+	</nav>
+	
+
+</body>
+</html>

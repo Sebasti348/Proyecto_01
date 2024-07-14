@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formulario De Alumnos</title>
+<link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+</head>
+<body class="  bg-primary">
+	<div data-th-replace="~{fragments/header::navbar}">
+	
+	</div>
+
+<h1 class=" text-white p-3 text-center">Formulario del Alumno</h1>
+
+	<div class="container" >
+	 
+		<form data-th-object="${nuevoAlumno}" data-th-action="${flag}?@{/modificarAlumno}:@{/guardarAlumno}" method="post" class="row">
+			<div >
+				<label for="nombre" class="form-label text-white">Nombre Completo</label> <input type="text" class="form-control" id="nombre" data-th-field="*{nombre}"  >
+				<p class="form-text text-danger" data-th-if="${#fields.hasErrors('nombre')}" data-th-errors="*{nombre}"></p>
+			</div >
+			
+						<div class="col-6">
+				<label for="apellido" class="form-label text-white">Apellido</label> <input type="text" class="form-control col-4"
+					id="apellido" aria-describedby="apellido" data-th-field="*{apellido}" >
+					<p class="form-text text-danger" data-th-if="${#fields.hasErrors('apellido')}" data-th-errors="*{apellido}"></p>
+			</div>
+						<div class="col-6">
+				<label for="email" class="form-label text-white">Email
+					</label> <input type="email" class="form-control"
+					id="email" aria-describedby="email" data-th-field="*{email}" >
+					<p class="form-text text-danger" data-th-if="${#fields.hasErrors('email')}" data-th-errors="*{email}"></p>
+			</div>
+						<div class="col-6">
+				<label for="telefono" class="form-label text-white">Telefono</label> <input type="number" class="form-control col-4"
+					id="telefono" aria-describedby="telefono" data-th-field="*{telefono}" >
+					<p class="form-text text-danger" data-th-if="${#fields.hasErrors('telefono')}" data-th-errors="*{telefono}"></p>
+			</div>
+						<div class="col-6">
+				<label for="fec_nac" class="form-label text-white">Fecha de nacimiento </label> <input type="date" class="form-control col-4"
+					id="fec_nac" aria-describedby="fec_nac" data-th-field="*{fec_nac}" >
+					<p class="form-text text-danger" data-th-if="${#fields.hasErrors('fec_nac')}" data-th-errors="*{fec_nac}"></p>
+			</div>
+						<div class="col-6">
+				<label for="domicilio" class="form-label text-white">Domicilio</label> <input type="text" class="form-control col-4"
+					id="domicilio" aria-describedby="domicilio" data-th-field="*{domicilio}" >
+					<p class="form-text text-danger" data-th-if="${#fields.hasErrors('domicilio')}" data-th-errors="*{domicilio}"></p>
+					
+			</div>
+			<div class="col-6">
+				<label for="dni" class="form-label text-white">DNI</label> <input type="number" class="form-control"
+					id="dni" aria-describedby="dni" data-th-field="*{dni}" required>
+					<p class="form-text text-danger" data-th-if="${#fields.hasErrors('dni')}" data-th-errors="*{dni}"></p>
+			</div>
+						<div class="col-6">
+				<label for="lu" class="form-label ">Libreta Universitaria</label> <input type="number" class="form-control"
+					id="lu" aria-describedby="lu" data-th-field="*{lu}" data-th-readonly=${flag} required>
+					<p class="form-text text-danger" data-th-if="${#fields.hasErrors('lu')}" data-th-errors="*{lu}"></p>
+			</div>
+			
+<!-- 			<div class="col-6"> -->
+			
+<!-- 				<label for="estadoAlumno" class="form-label mt-1 ">Estado</label> -->
+<!-- 						<select id="estadoAlumno"  class="form-select" data-th-field="*{estado}"> -->
+<!-- 							<option value=true>True</option> -->
+<!-- 							<option value=false>False</option> -->
+<!-- 						</select> -->
+				
+				
+<!-- 			</div> -->
+			<div class="col-md-12">
+					    <label for="carrera" class="form-label">Carrera</label>
+					    	<select id="carrera" data-th-field="*{carrera.codigo}" class="form-control" required>
+						    	<option value="">Seleccionar Carrera</option>
+						    	<option data-th-value="${c.codigo}" data-th-each="c:${listadoCarreras}" data-th-text="${c.nombre}"></option>
+						   	 </select>
+					    
+			</div>
+							  
+			<hr>
+			<br><br>	
+			<div class=" d-flex justify-content-center bg-white" >
+					<button type="submit" class="btn btn-light">Guardar Alumno</button>
+				</div>
+			
+			
+		</form>
+	<hr>
+
+	</div>
+		<div data-th-replace="~{fragments/footer::footer}">
+	
+	</div>
+		<script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+	
+</body>
+</html>

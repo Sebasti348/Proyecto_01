@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+
+<title>Formulario Carreras</title>
+</head>
+<body>
+	<div data-th-replace="~{fragments/header::navbar}"></div>
+	<br>
+	<div  style="background-color:#FF5733;">
+
+	
+	<section class="container" >
+	  <div class="bg-image h-50">
+	    <div class="mask d-flex align-items-center h-50">
+	      <div class="container">
+	        <div class="row d-flex justify-content-center align-items-center" style="padding-top: 3rem; padding-bottom: 3rem">
+	          <div class="col-12 col-lg-6 col-xl-6 ">
+	            <div class="card mask-custom text-white" style="border-radius: 1rem;">
+	              
+	                
+	                <div class="col-md-12 d-flex align-items-center">
+	                  <div class="card-body py-5 px-4 p-md-5" style="background-color:#000000;">
+	
+	                    <form data-th-object="${nuevaCarrera}" 
+							data-th-action="${flag}?@{/modificarCarrera}:@{/guardarCarrera}" 
+							method="post" 
+							>
+	                    <h3 class="fw-bold mb-4" id="titulo" style="color: #92aad0;">Formulario Carrera</h3>
+						
+						<div class="form-outline mb-4">
+	                        <input type="text" id="cod" class="form-control" data-th-field="*{codigo}" data-th-readonly="${flag}">
+	                        <label class="form-label" for="cod">Codigo</label>
+	                        <p class="form-text text-danger"
+							data-th-if="${#fields.hasErrors('codigo')}"
+							data-th-errors="*{codigo}"></p>
+	                      </div>
+	                      
+	                     <div class="form-outline mb-4">
+	                        <input type="text" id="nombre" class="form-control" data-th-field="*{nombre}"  />
+	                        <label class="form-label" for="nombre">Nombre de la Carrera</label>
+	                        <p class="form-text text-danger"
+							data-th-if="${#fields.hasErrors('nombre')}"
+							data-th-errors="*{nombre}"></p>
+	                     </div>
+	
+	                     <div class="form-outline mb-4">
+	                        <input type="number" id="cantidad" class="form-control" data-th-field="*{cantidadAnios}"/>
+	                        <label class="form-label" for="cantidad">Cantidad de Años</label>
+	                        <p class="form-text text-danger"
+								data-th-if="${#fields.hasErrors('cantidadAnios')}"
+								data-th-errors="*{cantidadAnios}"></p>
+	                     </div>
+<!-- 	                     <div class="col-sm-6"> -->
+<!-- 							<label for="estadoCarrera" class="form-label mt-1">Estado</label><br> -->
+<!-- 							<select class="form-select" id="estadoCarrera" -->
+<!-- 								data-th-field="*{estado}"> -->
+<!-- 								<option value="true">True</option> -->
+<!-- 								<option value="false">False</option> -->
+<!-- 							</select> -->
+<!-- 						</div> -->
+						<br>
+						<div class="d-flex justify-content-end pt-1 mb-4">
+	                        <button type="submit" class="btn btn-custom btn-outline-light btn-rounded ">Guardar Carrera</button>
+	                    </div>
+	                      <hr>
+	                      <a class="link link-light float-end" href="/listadoCarreras">Ver listado de carreras</a>
+	                     
+						</form>
+							<div class="alert alert-danger" role="alert" data-th-if="${errors}">
+		<p data-th-text="${cargaCarreraErrorMessage}"></p>
+	</div>
+	                  </div>
+	                </div>
+	              </div>
+	            </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</section>
+	
+		</div>
+	<br>
+	<br>
+	<div data-th-replace="~{fragments/footer::footer}"></div>
+	<script
+		data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

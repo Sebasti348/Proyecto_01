@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+
+<title>Formulario Materias</title>
+</head>
+<body>
+	<div data-th-replace="~{fragments/header::navbar}"></div>
+	<br>
+	<div class="container">
+		<h1>FORMULARIO MATERIA</h1>
+		<form data-th-object="${nuevaMateria}"
+			data-th-action="${flag}?@{/modificarMateria}:@{/guardarMateria}"
+			method="post">
+
+			<div class="col-sm-6">
+				<label for="codigo" class="form-label">Código</label> <input
+					type="text" class="form-control" id="codigo"
+					data-th-field="*{codigo}" data-th-readonly="${flag}" required>
+				<p class="form-text text-danger"
+					data-th-if="${#fields.hasErrors('codigo')}"
+					data-th-errors="*{codigo}"></p>
+			</div>
+
+			<div class="col-sm-6">
+				<label for="nombre" class="form-label">Nombre Materia</label> <input
+					type="text" class="form-control" id="nombre"
+					data-th-field="*{nombre}" required>
+				<p class="form-text text-danger"
+					data-th-if="${#fields.hasErrors('nombre')}"
+					data-th-errors="*{nombre}"></p>
+			</div>
+
+			<div class="col-sm-6">
+				<label for="curso" class="form-label">Curso</label> <input
+					type="text" class="form-control" id="curso"
+					data-th-field="*{curso}" required>
+				<p class="form-text text-danger"
+					data-th-if="${#fields.hasErrors('curso')}"
+					data-th-errors="*{curso}"></p>
+			</div>
+
+			<div class="col-sm-6">
+				<label for="cantidadHoras" class="form-label">Cantidad Horas</label>
+				<input type="number" class="form-control" id="cantidadHoras"
+					data-th-field="*{cantidadHoras}" required>
+					<p class="form-text text-danger"
+					data-th-if="${#fields.hasErrors('cantidadHoras')}"
+					data-th-errors="*{cantidadHoras}"></p>
+			</div>
+<!-- 			<div class="col-sm-6"> -->
+<!-- 				<label for="estadoMateria" class="form-label mt-1">Estado</label><br> -->
+<!-- 				<select class="form-select" id="estadoMateria" -->
+<!-- 					data-th-field="*{estado}"> -->
+<!-- 					<option value="true">True</option> -->
+<!-- 					<option value="false">False</option> -->
+<!-- 				</select> -->
+<!-- 			</div> -->
+			<div class="col-sm-6">
+				<label for="modalidad" class="form-label">Modalidad</label> <select
+					class="form-select" id="modalidad" data-th-field="*{modalidad}"
+					required>
+					<option value="Virtual">Virtual</option>
+					<option value="Presencial">Presencial</option>
+				</select>
+			</div>
+
+			<div class="col-sm-6">
+				<label class="form-label" for="docente">Docente</label> <select
+					class="form-select" id="docente" data-th-field="*{docente.legajo}"
+					required>
+					<option value="">Seleccionar Docente</option>
+					<option data-th-each="d:${listadoDocentes}"
+						data-th-value="${d.legajo}" data-th-text="${d.nombre}"></option>
+				</select>
+			</div>
+
+			<div class="col-sm-6">
+				<label class="form-label" for="carreraa">Carrera</label> <select
+					class="form-select" id="carrera" data-th-field="*{carrera.codigo}"
+					required>
+					<option value="">Seleccionar Carrera</option>
+					<option data-th-each="l:${listadoCarrera}"
+						data-th-value="${l.codigo}" data-th-text="${l.nombre}"></option>
+				</select>
+			</div>
+
+			<br>
+
+			<div>
+				<button type="submit" class="btn btn-primary">Guardar
+					Materia</button>
+				<a class="btn btn-secondary" href="/listadoMaterias">Ver listado
+					de Materias</a>
+			</div>
+		</form>
+		<div class="alert alert-danger" role="alert" data-th-if="${errors}">
+			<p data-th-text="${cargaDocenteErrorMessage}"></p>
+		</div>
+	</div>
+	<br>
+	<br>
+	<div data-th-replace="~{fragments/footer::footer}"></div>
+	<script
+		data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

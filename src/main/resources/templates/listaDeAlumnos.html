@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Listado De Alumnos</title>
+<link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+</head>
+<body>
+	<div data-th-replace="~{fragments/header::navbar}"></div>	
+	<div class="container p-2 m-2 " >
+		<table class="table" >
+		<thead>
+			<tr>
+				<th scope="col">Libreta Universitaria</th>
+				<th scope="col">Nombre</th>
+				<th scope="col">Apellido</th>
+				<th scope="col">Email</th>
+				<th scope="col">Carrera</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			<tr data-th-each="alumno : ${listadoAlumnos}">
+				<td data-th-text="${alumno.lu}"></td>
+				<td data-th-text="${alumno.nombre}"></td>
+				<td data-th-text="${alumno.apellido}"></td>
+				<td data-th-text="${alumno.email}"></td>
+				<td data-th-text="${alumno.carrera.nombre}"></td>
+				<td>
+					<a data-th-href="@{'/borrarAlumno/'+${alumno.lu}}" class="btn btn-danger">Borrar</a>				
+					<a data-th-href="@{'/modificarAlumno/'+${alumno.lu}}" class="btn btn-warning">Modificar</a>
+				</td>
+			</tr>
+			<tr data-th-each="m:${listadoAlumnosM}"
+				 data-th-value="${m.codigo}" data-th-text="${m.nombre}">
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	<div class="alert alert-danger" role="alert" data-th-if="${errors}">
+			<p data-th-text="${cargaAlumnoErrorMessage}"></p>
+		</div>
+			<div data-th-replace="~{fragments/footer::footer}"></div>
+			<script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>
+	
+</body>
+</html>
